@@ -7,28 +7,32 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
-  // declare result value
   var product = 1;
-  // identify base case / smallest piece of data function needs to handle
   if (n === 1) {
-    //  solve for base case
     return n;
   }
 
-  // identify recursive case
   if (n > 1) {
-    // accumulate return to the previous input
     product = n * factorial(n - 1);
   } else if (n < 0) {
     return null;
   }
 
-  return product; // return result value
+  return product;
 };
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+  var total = 0;
+
+  if (array.length === 0) {
+    return 0;
+  }
+
+  total = array[0] + sum(array.slice(1));
+
+  return total;
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
