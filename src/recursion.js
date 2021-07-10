@@ -83,13 +83,25 @@ var sumBelow = function(n) {
     sum = negativeAccumulator + sumBelow(Math.abs(n) - 1);
     return -sum;
   }
-
-  return sum;
 };
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
-var range = function(x, y) {
+var range = function(x, y) { // check back later
+  var numbersInRange = [];
+  var newRange = [];
+
+  for (var indexInRange = x + 1; indexInRange < y; indexInRange++) {
+    newRange.push(indexInRange);
+    range(indexInRange, y);
+  }
+
+  for (var indexInRange = x - 1; indexInRange > y; indexInRange--) {
+    newRange.push(indexInRange);
+  }
+
+  return newRange;
+
 };
 
 // 7. Compute the exponent of a number.
@@ -98,6 +110,7 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  // return exponent(4, 3);
 };
 
 // 8. Determine if a number is a power of two.
@@ -109,6 +122,21 @@ var powerOfTwo = function(n) {
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+  var reversedString = '';
+  var arrayofStrings = [];
+
+  if (string.length === 0) {
+    return '';
+  }
+
+  for (var i = string.length - 1; i > -1; i--) {
+    arrayofStrings.push(string[i]);
+  }
+
+  arrayofStrings.forEach(function(item) {
+    reversedString += reverse(item);
+  });
+  return reversedString;
 };
 
 // 10. Write a function that determines if a string is a palindrome.
